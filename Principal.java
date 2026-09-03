@@ -1,11 +1,11 @@
 public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("1. G/G/1/5, chegadas entre 3...5, atendimento entre 4...5:");
-        simular(1, 5, 3.0, 5.0, 4.0, 5.0, 3.0, 1);
+        System.out.println("1. G/G/1/5, chegadas entre 2...5, atendimento entre 3...5:");
+        simular(1, 5, 2.0, 5.0, 3.0, 5.0, 3.0, 1);
 
-        System.out.println("\n2. G/G/2/5, chegadas entre 3...5, atendimento entre 4...5:");
-        simular(2, 5, 3.0, 5.0, 4.0, 5.0, 3.0, 1);
+        System.out.println("\n2. G/G/2/5, chegadas entre 2...5, atendimento entre 3...5:");
+        simular(2, 5, 2.0, 5.0, 3.0, 5.0, 3.0, 1);
     }
 
     public static void simular(int servidores, int capacidade, double minArrival, double maxArrival,
