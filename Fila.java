@@ -1,6 +1,5 @@
-import java.util.Random;
-
 public class Fila {
+
     int servidores;
     int capacidade;
     double minArrival, maxArrival;
@@ -11,11 +10,12 @@ public class Fila {
     double[] tempos;
     double[] nextServiceEnd;
     double ultimoTempo;
-    Random random;
+
+    GeradorLCG gerador;
     int contadorAleatorios;
 
     public Fila(int servidores, int capacidade, double minArrival, double maxArrival, double minService,
-            double maxService, long seed) {
+                double maxService, long seed) {
         this.servidores = servidores;
         this.capacidade = capacidade; // K é capacidade total do sistema
         this.minArrival = minArrival;
@@ -30,7 +30,7 @@ public class Fila {
         for (int i = 0; i < servidores; i++)
             nextServiceEnd[i] = Double.POSITIVE_INFINITY;
         this.ultimoTempo = 0.0;
-        this.random = new Random(seed);
+        this.gerador = new GeradorLCG(seed);
         this.contadorAleatorios = 0;
     }
 
@@ -100,12 +100,12 @@ public class Fila {
 
     public double gerarChegada() {
         contadorAleatorios++;
-        return minArrival + (maxArrival - minArrival) * random.nextDouble();
+        return minArrival + (maxArrival - minArrival) * gerador.nextRandom();
     }
 
     public double gerarServico() {
         contadorAleatorios++;
-        return minService + (maxService - minService) * random.nextDouble();
+        return minService + (maxService - minService) * gerador.nextRandom();
     }
 
     public int getContadorAleatorios() {
